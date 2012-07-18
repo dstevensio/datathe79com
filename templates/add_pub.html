@@ -1,0 +1,67 @@
+{{>header.html}}
+{{#loggedIn}}
+{{#pubList}}
+<div class="well">
+  <h2>{{heading}}</h2>
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>Pub Name</th>
+    </tr>
+    {{#pubs}}
+    <tr>
+      <td><span class="icon-pencil"></span> <a href="/edit/pub/{{id}}">{{name}}</a></td>
+    </tr>
+    {{/pubs}}
+  </table>
+</div>
+{{/pubList}}
+{{^pubList}}
+{{#pubs}}
+<div class="well" id="detailcontainer">
+  <h2 style="border-bottom:1px solid #ddd; margin-bottom:10px;">{{heading}}</h2>
+  <form class="form-horizontal" action="/save/pub" method="post">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="pubname">Name</label>
+        <div class="controls">
+          <input type="text" value="{{name}}" class="input-xlarge" id="pubname" name="Name">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="address">Address</label>
+        <div class="controls">
+          <input id="club" type="text" size="16" class="span3" value="{{address}}" name="address">
+          <p class="help-block">
+            <span class="label label-info">Info</span> Full postal address please!
+          </p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="googlemaplink">Google Map Link</label>
+        <div class="controls">
+          <input type="text" value="{{googleMapLink}}" class="span3" id="googlemaplink" name="googleMapLink">
+          <p class="help-block">
+            <span class="label label-info">Info</span> Put the address in to google maps, click the share link, and put the short URL here!
+          </p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="detail">Detail/Info</label>
+        <div class="controls">
+          <textarea class="input-xlarge" id="detail" name="Detail" rows="6">{{detail}}</textarea>
+          <p class="help-block">
+            <span class="label label-info">Info</span> Some info about the pub that'll be useful to fans. Stray away from a full on review, ideally we'll just present facts like whether away fans are welcome, football shirts/colours are allowed, beers available, food available, etc.
+          </p>
+        </div>
+      </div>
+      <div class="form-actions">
+        {{#id}}<input type="hidden" name="pubId" value="{{id}}">{{/id}}
+        <button type="submit" name="isPub" value="yes" class="btn btn-primary btn-large">Save</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+{{/pubs}}
+{{/pubList}}
+{{/loggedIn}}
+{{>footer.html}}

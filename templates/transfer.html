@@ -1,0 +1,66 @@
+{{>header.html}}
+<div class="row">
+  {{#transfer}}
+  <div class="well span4">
+    <span class="label label-info">{{date}}</span>
+    <span class="status label {{labelType}}">{{status}}</span>
+    <h2>{{playerName}}</h2>
+    {{#twitter}}<a class="btn btn-primary" href="http://twitter.com/{{twitter}}" target="blank"><i class="icon-user icon-white"></i> @{{twitter}}</a>{{/twitter}}
+    <table class="table table-striped" style="margin-top:20px;">
+      <tr>
+        <td><span class="label label-info">Current Club</span></td><td>{{playerCurrentClub}}</td>
+      </tr>
+      <tr>
+        <td><span class="label label-info">Fee</span></td><td>{{fee}}</td>        
+      </tr>
+      <tr>
+        <td><span class="label label-info">Age</span></td><td>{{playerAge}}</td>
+      </tr>
+      <tr>
+        <td><span class="label label-info">Position</span></td><td>{{playerPosition}}</td>
+      </tr>
+    </table>
+    <div>
+      <h4>Sources</h4>
+      <ul class="nav nav-list">
+        {{#sources}}
+        <li><a href="{{url}}"><i class="icon-bookmark"></i> {{sourceName}}</a></li>
+        {{/sources}}
+      </ul>  
+    </div>
+    <div>
+      <h4>Rivals for Signature</h4>
+      <ul class="nav nav-list">
+        {{#rivals}}
+        <li><a href="{{url}}"><i class="icon-exclamation-sign"></i> {{clubName}}</a></li>
+        {{/rivals}}
+      </ul>  
+    </div>
+  </div>
+  {{#haveupdates}}
+  <div class="well span4">
+    {{#updates}}
+    <div>
+      <span class="label label-inverse">UPDATE {{date}}</span> <a href="{{url}}" style="display:block;"><i class="icon-bookmark"></i> {{title}}</a>
+    </div>
+    {{/updates}}
+  </div>  
+  {{/haveupdates}}
+  {{/transfer}}
+</div>
+{{>footer.html}}
+
+
+<!--
+16 May 2012 linked from 01 May 2012 
+Name: Garath McCleary [twitter]
+Club: Nottingham Forest
+Fee: Free - end of contract
+Age: 24 [now 25]
+Position: Right Winger
+Source: CamberleyRoyal - HNA? - LINK
+04 May - Reading Post LINK, Fridays_Legacy LINK
+Rivals for signature: West Bromwich Albion, Norwich City, Wigan, Celtic
+UPDATE 11 May 2012 Sky Sports: Reading winning the race for McCleary LINK
+SIGNED 16 MAY 2012 - FREE TRANSFER LINK
+-->

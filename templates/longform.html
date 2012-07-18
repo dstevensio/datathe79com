@@ -1,0 +1,17 @@
+{{>header.html}}
+{{#longform}}
+<div class="well">
+  <h2>{{title}}</h2>
+  <h3><a href="http://twitter.com/{{author}}">@{{author}}</a></h3>
+  <hr>
+  {{{body}}}
+  <hr>
+  <p>
+    <span class="label label-info">Updated: {{date}}</span>
+  </p>
+  <p>
+    <a class="btn btn-primary" href="/editorialcontent"><i class="icon-list-alt icon-white"></i> List all content</a>
+  </p>
+</div>
+{{/longform}}
+{{>footer.html}}

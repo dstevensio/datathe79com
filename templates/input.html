@@ -1,0 +1,39 @@
+{{>header.html}}
+{{#loggedIn}}
+{{>loginorwelcome.html}}
+<div class="row-fluid">
+  <div class="span6">
+  	<h2>Comments</h2>
+  	<div class="well">
+  	  <form class="form-inline">
+        <input type="text" class="input-xlarge">
+        <button type="submit" class="btn">Add Comment</button>
+      </form>
+      <div>
+        Comments will go here <span class="label label-warning">Work in progress</span>
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+  	<h2>Milestones</h2>
+    <div class="well">
+      Milestones will go here <span class="label label-warning">Work in progress</span>
+    </div>
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+  	<h2>Tasks / To-Do</h2>
+    <div class="well">
+      Tasks will go here <span class="label label-warning">Work in progress</span>
+    </div>
+  </div>
+  <div class="span6">
+  	<h2>Activity Log</h2>
+    <div class="well">
+      Activity Log will go here <span class="label label-warning">Work in progress</span>
+    </div>
+  </div>
+</div>
+{{/loggedIn}}
+{{>footer.html}}

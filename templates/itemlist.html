@@ -1,0 +1,15 @@
+{{>header.html}}
+<div class="well">
+  <h2>{{heading}}</h2>
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>{{columnTitle}}</th>
+    </tr>
+    {{#items}}
+    <tr>
+      <td>{{#isEditable}}<span class="icon-pencil"></span> {{/isEditable}}<a href="{{url}}">{{linktext}}</a></td>
+    </tr>
+    {{/items}}
+  </table>
+</div>      
+{{>footer.html}}

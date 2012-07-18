@@ -1,0 +1,186 @@
+{{>header.html}}
+{{#loggedIn}}
+{{#transferList}}
+<div class="well">
+  <h2>{{heading}}</h2>
+  <table class="table table-striped table-bordered">
+    <tr>
+      <th>Player Name</th>
+    </tr>
+    {{#transfers}}
+    <tr>
+      <td><span class="icon-pencil"></span> <a href="/edit/transfer/{{id}}">{{playerName}}</a></td>
+    </tr>
+    {{/transfers}}
+  </table>
+</div>
+{{/transferList}}
+{{^transferList}}
+{{#transferId}}
+<ul class="nav nav-pills" id="editnav">
+  <li class="active">
+    <a href="#updatecontainer">Add Update</a>
+  </li>
+  <li><a href="#detailcontainer">Edit Transfer</a></li>
+</ul>
+<div class="well" id="updatecontainer">
+  <h2 style="border-bottom:1px solid #ddd; margin-bottom:10px;">Add an update to this Transfer</h2>
+  <form class="form-horizontal" action="/update/transfer" method="post">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="datepickerupd">Date</label>
+        <div class="controls">
+          <input type="text" value="{{transferDetailDate}}" data-date-format="dd/mm/yy" id="datepickerupd" name="updateDate">
+          <p class="help-block"><span class="label label-info">Info</span> Date of this update (DD/MM/YY)</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="updatetitle">Title</label>
+        <div class="controls">
+          <input type="text" value="" class="input-xlarge" id="updatetitle" name="updateTitle">
+          <p class="help-block"><span class="label label-info">Info</span> Short description/headline/status</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="updatelink">Link</label>
+        <div class="controls">
+          <input type="text" value="" class="input-xlarge" id="updatelink" name="updateLink">
+          <p class="help-block"><span class="label label-info">Info</span> Link to story/source. If only in hard copy of newspaper, etc, leave this blank.</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="status">Status</label>
+        <div class="controls">
+          <select id="updatestatus" name="updateStatus">
+            <option value="1">Rumour</option>
+            <option value="2">Confirmed Interest</option>
+            <option value="3">Bid Accepted</option>
+            <option value="4">Deal Close</option>
+            <option value="5">Done Deal</option>            
+            <option value="6">Interest Ended</option>            
+            <option value="7">Rejected By Player</option>                        
+          </select>  
+          <p class="help-block">
+            <span class="label label-info">Info</span> Status of this transfer after this update
+          </p>
+        </div>
+      </div>      
+      <div class="form-actions">
+        {{#transferId}}<input type="hidden" name="transferId" value="{{transferId}}">{{/transferId}}
+        <button type="submit" name="isTransferUpdate" value="yes" class="btn btn-primary btn-large">Add Update</button>
+      </div>
+    </fieldset>
+  </form>  
+</div>
+{{/transferId}}
+<div class="well" id="detailcontainer">
+  <h2 style="border-bottom:1px solid #ddd; margin-bottom:10px;">{{heading}}</h2>
+  <form class="form-horizontal" action="/save/transfer" method="post">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="datepicker">Date</label>
+        <div class="controls">
+          <input type="text" value="{{transferDetailDate}}" data-date-format="dd/mm/yy" id="datepicker" name="transferDate">
+          <p class="help-block"><span class="label label-info">Info</span> Date of rumour/confirmed transfer/etc (DD/MM/YY)</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="playername">Name</label>
+        <div class="controls">
+          <input type="text" value="{{playerName}}" class="input-xlarge" id="playername" name="playerName">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="playertwitter">Twitter</label>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on">@</span><input type="text" value="{{playerTwitter}}" class="input-large" size="16" id="playertwitter" name="playerTwitter">
+          </div>
+          <p class="help-block">
+            <span class="label label-info">Info</span> If the player has a confirmed Twitter account, add it here. No account? Leave it blank.
+          </p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="club">Current Club</label>
+        <div class="controls">
+          <input id="club" type="text" size="16" class="span3" value="{{playerCurrentClub}}" data-provide="typeahead" data-items="8" data-source='{{clubDataSources}}' name="currentClub">
+          <p class="help-block">
+            <span class="label label-info">Info</span> If transfer is out of the club, choose current club as Reading. If the club you are entering isn't recognized, it'll be added to the known clubs list and next time you go to enter them it'll be there.
+          </p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="fee">Fee</label>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on">&pound;</span><input type="text" value="{{fee}}" class="input-large" size="16" id="fee" name="Fee">
+          </div>
+          <p class="help-block">
+            <span class="label label-info">Info</span> Fee, in pounds. If not known, leave blank. If free, enter <code>0</code>. Don't enter a pound sign. You can enter short form (e.g. <code>2m</code>, <code>700k</code>, etc) or full number (<code>2000000</code>, <code>700000</code>, etc). If it's listed in &euro; or $, convert it to pounds with <a href="http://www.xe.com/ucc/" target="blank">this currency converter</a>.
+          </p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="age">Age</label>
+        <div class="controls">
+          <input type="text" value="{{playerAge}}" class="input-mini" id="age" name="Age">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="position">Position</label>
+        <div class="controls">
+          <input id="position" type="text" size="16" class="span3" name="position" value="{{playerPosition}}" data-provide="typeahead" data-items="8" data-source='{{playerPositions}}'>
+          <p class="help-block">
+            <span class="label label-info">Info</span> Enter player's position. If multiple positions, separate by a forward slash <code>/</code>. If the position you want to 
+            enter doesn't come up in the list, enter it however you want it to be shown. It'll be remembered for future use.
+          </p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="sources">Sources</label>
+        <div class="controls">
+          <textarea class="input-xlarge" id="sources" name="Sources" rows="4">{{sources}}</textarea>
+          <p class="help-block">
+            <span class="label label-info">Info</span> One source per line. Enter name of source, a comma, a space, then the full URL e.g. <code style="display:block;margin-top:5px;">Reading FC Official Site, http://www.readingfc.co.uk<br>
+            GetReading, http://www.getreading.co.uk/story/a_story_about_transfers</code>
+          </p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="rivals">Rivals for Signature</label>
+        <div class="controls">
+          <textarea class="input-xlarge" id="rivals" name="Rivals" rows="4">{{rivals}}</textarea>
+          <p class="help-block">
+            <span class="label label-info">Info</span> One club per line. Enter name of club, a comma, a space, then the full URL of the source for their interest e.g. <code style="display:block;margin-top:5px;">Southampton, http://www.southampton-news.co.uk/we_want_your_targets/<br>
+            West Ham Utd, http://www.hammersonline.com/hammers_want_readingfc_target.htm</code>
+          </p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="status">Status</label>
+        <div class="controls">
+          <select id="status" name="Status">
+            <option value="1">Rumour</option>
+            <option value="2">Confirmed Interest</option>
+            <option value="3">Bid Accepted</option>
+            <option value="4">Deal Close</option>
+            <option value="5">Done Deal</option>            
+            <option value="6">Interest Ended</option>            
+            <option value="7">Rejected By Player</option>                                    
+          </select>  
+          <p class="help-block">
+            <span class="label label-info">Info</span> Choose an appropriate status for the type of transfer information this is. If this changes you can edit it as necessary later.
+          </p>
+        </div>
+      </div>
+      <div class="form-actions">
+        {{#transferId}}<input type="hidden" name="transferId" value="{{transferId}}">{{/transferId}}
+        <button type="submit" name="isTransfer" value="yes" class="btn btn-primary btn-large">Save</button>
+      </div>
+    </fieldset>
+  </form>
+</div>
+{{/transferList}}
+{{/loggedIn}}
+{{>footer.html}}

@@ -1,0 +1,47 @@
+{{>header.html}}
+{{#loggedIn}}
+<!-- REMOVE THE LOGGED IN CHECK HERE AFTER THE BETA IS OVER -->
+
+<div class="hero-unit">
+  <h1>Transfers</h1>
+  <p>Latest confirmed deals, speculation, paper talk and contract details. Who's coming in, who's staying and who's leaving.</p>
+  <p>
+    {{#transfers}}
+    <a href="/transfer/{{id}}/{{seoplayername}}">{{status}}: {{playerName}}</a>{{^last}} | {{/last}}
+    {{/transfers}}
+    <a href="#">Rumoured: Luke Young</a> | <a href="#">Done Deal: Danny Guthrie</a> | <a href="#">Done Deal: Pavel Pogrebnyak</a>
+  </p>
+  <p><a class="btn btn-primary btn-large" href="/transfers">View All &raquo;</a></p>
+</div>
+
+<div class="row">
+  <div class="span4">
+    <h2>Club History</h2>
+     <p>
+        This month's featured historical event is <a href="#">the move away from Elm Park in 1998</a>, to the majestic Madejski Stadium. Memories of the old ground from Fans and more.
+     </p>
+     <p>
+        <a href="#">Robin Friday</a> | <a href="#">Thames Valley Royals</a>
+     </p>
+    <p><a class="btn" href="#">All History &raquo;</a></p>
+  </div>
+  <div class="span4">
+    <h2>Away Fans Guide</h2>
+    <p>
+      Information from locals for visiting supporters of other clubs making their way to the Madejski this season. Where to grab a pint, get some food and getting to the stadium, as well
+      as some local tips for after the game.
+    </p>
+    <p><a class="btn" href="#">See The Guide &raquo;</a></p>
+ </div>
+  <div class="span4">
+    <h2>Twitter</h2>
+    <p>
+      Find Royals players official Twitter accounts, those of the Club, and Reading fans. Also includes details of hashtags in use by Royals fans to help you find others talking about the club.
+    </p>
+    <p><a class="btn" href="#">Open Twitter Section &raquo;</a></p>
+  </div>
+</div>
+
+
+{{/loggedIn}}
+{{>footer.html}}

@@ -1,0 +1,51 @@
+{{>header.html}}
+<div class="well">
+  <h2>{{heading}}</h2>
+  <form class="form-horizontal" action="/save/freeform" method="post">
+    <fieldset>
+      <div class="control-group">
+        <label class="control-label" for="title">Title</label>
+        <div class="controls">
+          <input type="text" value="{{freeformTitle}}" id="title" name="Title">
+          <p class="help-block"><span class="label label-info">Info</span> Title/Name/Headline for this Article/Report/Guide</p>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="status">Category/Top Level Section</label>
+        <div class="controls">
+          <select id="section" name="Section">
+            {{#sections}}
+              <option value="{{val}}"{{#selected}} selected="selected"{{/selected}}>{{title}}</option>
+            {{/sections}}
+          </select>  
+          <p class="help-block">
+            <span class="label label-info">Info</span> Where is this going to live on the site? Specific surfacing, arranging and importance will be decided later, but let us know which area it fits into.
+          </p>
+        </div>
+      </div>      
+      <div class="control-group">
+        <label class="control-label" for="rivals">Content</label>
+        <div class="controls">
+          <p class="help-block">
+            <span class="label label-info">Info</span> You can use Markdown for formatting. <br>Common formatting:
+            <ul class="unstyled">
+              <li>Large Heading: <code>### Heading Text</code></li>
+              <li>List: One item per line, preceded by <code>*</code>, e.g.<br><code>* First Item<br>* Second Item</code></li>
+              <li>Link: <code>[Text For Link](http://www.link.com/)</code></li>
+              <li>Image: <code>![Alt text](/path/to/img.jpg)</code></li>
+              <li>Bold Text: <code>**This text will be bold**</code></li>
+              <li>Italic Text: <code>*This text will be italic*</code></li>
+            </ul> 
+            <br><a href="http://daringfireball.net/projects/markdown/syntax/">Full guide here</a> 
+          </p>
+            <textarea class="span10" id="content" name="freeformContent" rows="18">{{freeformContent}}</textarea>
+        </div>
+      </div>      
+      <div class="form-actions">
+        {{#transferId}}<input type="hidden" name="transferId" value="{{transferId}}">{{/transferId}}
+        <button type="submit" name="isFreeform" value="yes" class="btn btn-primary btn-large">Save</button>
+      </div>
+    </fieldset>
+  </form>    
+</div>
+{{>footer.html}}

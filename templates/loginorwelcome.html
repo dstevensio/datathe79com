@@ -1,0 +1,15 @@
+{{#loggedIn}}
+<div class="alert alert-success">
+  <a class="close" data-dismiss="alert" href="#">×</a>
+  Welcome back, {{userName}}
+</div>
+{{/loggedIn}}
+{{^loggedIn}}
+<p>
+  If you've been asked to contribute data to this project, please log in using twitter below. If you've not been asked, it won't work! If you're interested in helping out
+  then please get in touch with @shakefon on Twitter.
+</p>
+<p>
+  <a class="btn btn-primary btn-large" href="/auth/twitter">Log in with Twitter</a>
+</p>
+{{/loggedIn}}
