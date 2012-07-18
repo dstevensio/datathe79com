@@ -1,0 +1,31 @@
+{
+  "name": "datathe79com",
+  "preferGlobal": "false",
+  "version": "0.0.1",
+  "author": "Dave Stevens <dave@the79.com>",
+  "description": "Data Entry for A data-driven web resource for fans of Reading FC",
+  "contributors": [],
+  "bin": {},
+  "scripts": {},
+  "main": "",
+  "repository": {},
+  "keywords": [],
+  "dependencies" : {
+    "q"   :  "*",
+    "connect" :  "2.x.x",
+    "redis" :  "0.7.x",
+    "hiredis" :  "0.1.x",
+    "connect-redis" :  "1.4.x",
+    "everyauth" : "0.2.32",
+    "mu2" : "0.5.15",
+    "route66" : "0.1.16",
+    "node-markdown": "0.1.0"
+  },
+  "devDependencies": {
+  },
+  "bundleDependencies": [
+  ],
+  "engine": {
+    "node": ">=0.8"
+  }
+}
